@@ -1,0 +1,372 @@
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+    background-image: linear-gradient(black, #1E352F);
+    background-color: #1E352F;
+    color: #3f7063;
+    margin: 0;
+    padding: 0;
+}
+
+#logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navigation {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:20px;
+}
+
+nav {
+    border-radius: 50px;
+    padding: 2px;
+    box-shadow: 0px 25px 20px -20px #3f7063ae;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 0px 40px;
+    font-size: 20px;
+    font-family: 'Cinzel', serif;
+    font-weight: 500;
+    color: #B88756;
+    cursor: pointer;
+    position: relative;
+    left: -22px;
+    z-index: 1;
+    transition: color 0.5s;
+}
+
+nav ul li::after {
+    content: '';
+    background: #B88756;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0;
+    transition: top 0.5s, opacity 1s;
+    animation-name: pulseButton;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction:alternate-reverse; 
+}
+
+nav ul li:hover {
+    color: white;
+    animation-name: pulseText;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction:alternate-reverse;
+}
+
+nav ul li:hover::after {
+    top: 50%;
+    opacity: 1;
+}
+
+
+
+@keyframes pulseText {
+    from {
+        transform:none;
+    }
+    to {
+        transform: rotate(-.01turn);
+        font-weight:bold;
+    }
+}
+
+
+@keyframes pulseButton {
+    from {
+        transform: translate(-50%, -50%) skewX(0);
+    }
+    to {
+        transform: translate(-50%, -50%) SkewX(2deg);
+    }
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    color:#B88756;
+}
+
+.box {
+    width: 300px;
+    height: 470px;
+    text-align: center;
+}
+
+.cocktail {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.drinkpic {
+    max-width: 100%;
+    max-height: 80%;
+    transition: transform .8s;
+    filter:brightness(80%) saturate(90%);
+}
+
+.description {
+    position: absolute;
+    letter-spacing: 1px;
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    background-color: #6B1A14;
+    color: rgb(231, 229, 228);
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    display: none;
+    transition: opacity 0.3s;
+}
+
+.cocktail:hover .drinkpic {
+    transform: scale(1.2);
+    filter:brightness(1.1) saturate(1.1);
+}
+
+.cocktail:hover .description {
+    display: block;
+    opacity: .8;
+}
+
+#drinkpic:hover {
+    position: relative;
+    transform: scale(1.2);
+}
+
+.box:target .drinkpic {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
+    z-index: 3;
+    transition: transform 0.5s, z-index 0s 0.5s;
+}
+
+.box:target .description {
+    display: block;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.box:target .hovername {
+    display: block;
+}
+
+.cocktail:hover .hovername {
+    display: block;
+}
+
+.hovername {
+    position: absolute;
+    letter-spacing: 1px;
+    margin-top: 1em;
+    left: 0;
+    right: 0;
+    background-color: #B88756;
+    color:#6B1A14;
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.71), 0px 0px 5px rgba(255, 255, 255, 0.71), 0px 0px 5px rgba(255, 255, 255, 0.71), 0px 0px 5px rgba(255, 255, 255, 0.71);
+    font-size: 20px;
+    font-weight:bolder;
+    text-align: center;
+    padding: 10px;
+    display: none;
+}
+
+#cocktailname {
+    font-size: 20px;
+    color: white;
+    text-shadow: 0px 0px 5px #B88756, 0px 0px 5px #B88756, 0px 0px 5px #B88756, 0px 0px 5px #B88756;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    color:#6B1A14;
+    font-weight: bold;
+    text-align: center;
+    padding: .2em;
+    background-color:#B88756;
+}
+
+.minimal {
+    width: 0px;
+    display: none;
+
+}
+
+
+@media screen and (max-width: 1100px) and (min-width: 501px) {
+
+    #logo {
+        max-width: 80%;
+    }
+
+    .drinkpic {
+        max-width: 60%;
+        max-height: 60%;
+    }
+    
+    #cocktailname {
+        font-size: 16px;
+    }
+
+    .description {
+        display: block; 
+        max-width: 54%;
+        max-height: 15em;
+        position: absolute;
+        left: 4.2em;
+        top: 22em;
+        background-color: #6B1A14;
+        color: rgb(231, 229, 228);
+        font-weight: bold;
+        text-align: center;
+        font-size: 14px;
+        padding: 10px;
+        padding-top: 3px;
+    }
+
+    .cocktail:hover .drinkpic {
+        transform: scale(1); 
+    }
+
+    .cocktail:hover .description {
+        display: block;
+        opacity: 1;
+    }
+
+    .hovername {
+        display: none; 
+    }
+
+    .box:target .description {
+        display: none;
+    }
+    
+    .box:target .hovername {
+        display: none;
+    }
+    
+    .cocktail:hover .hovername {
+        display: none;
+    }
+
+    #footerdesc {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+
+    footer {
+        width: 0px;
+        display: none;
+    }
+
+   nav {
+        width: 0px;
+        display: none;
+    }
+
+    .navigation {
+        width: 0px;
+        display: none;
+    }
+
+    .container {
+        width: 0px;
+        display: none;
+    }
+
+    #logo {
+        max-width: 80%;
+    }
+
+    #map {
+        max-width: 90%;
+    }
+
+    .minimal {
+        display: block; 
+        width: 100%;
+        text-align: center;
+        font-size: 24px;
+        color:#B88756;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.507);
+    backdrop-filter: blur(10px) grayscale(100%);
+    z-index: 3;
+}
+
+body.modal-open {
+    backdrop-filter: blur(1px);
+}
+
+.modal-content {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -35%) scale(.6);
+    background-color: #1E352F;
+    color:#fff;
+    text-align: center;
+    font-size: 30px;
+    padding: 40px;
+    z-index: 3;
+}
+
+.close {
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.modal-dialog {
+    filter: none;
+}
